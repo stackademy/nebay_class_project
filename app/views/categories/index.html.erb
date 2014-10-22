@@ -1,0 +1,6 @@
+
+<% @categories.each do |category| %>
+
+<%= link_to category.capitalize, category_path(category) %>
+
+<% end %>
