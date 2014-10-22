@@ -8,6 +8,7 @@
       <th>End date</th>
       <th>User</th>
       <th>High bid</th>
+      <th>High bidder</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +19,26 @@
         <td><%= auction.title %></td>
         <td><%= auction.description %></td>
         <td><%= auction.end_date %></td>
-        <td><%= auction.user_id %></td>
-        <td><%= auction.highest_bid.amount %></td>
+        <td><%= auction.user.email %></td>
+
+        <td>
+          <% if auction.bids.present? %>
+            <%= auction.highest_bid.amount %>
+          <% else %>
+            no bids
+          <% end %>
+        </td>
+
+        <td>
+          <% if auction.bids.present? %>
+            <%= auction.highest_bid.user.email %>
+          <% else %>
+            no bids!
+          <% end %>
+        </td>
+
+
+
         <td><%= link_to 'Show', auction %></td>
         <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
         <td><%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
