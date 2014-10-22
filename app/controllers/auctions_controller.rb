@@ -1,28 +1,21 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
 
-  # GET /auctions
-  # GET /auctions.json
   def index
     @auctions = Auction.all
   end
 
-  # GET /auctions/1
-  # GET /auctions/1.json
   def show
+    @current_auction = Auction.find(params[:id])
   end
 
-  # GET /auctions/new
   def new
     @auction = Auction.new
   end
 
-  # GET /auctions/1/edit
   def edit
   end
 
-  # POST /auctions
-  # POST /auctions.json
   def create
     @auction = Auction.new(auction_params)
     @auction.user = current_user
@@ -39,8 +32,6 @@ class AuctionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /auctions/1
-  # PATCH/PUT /auctions/1.json
   def update
     respond_to do |format|
       if @auction.update(auction_params)
@@ -53,8 +44,6 @@ class AuctionsController < ApplicationController
     end
   end
 
-  # DELETE /auctions/1
-  # DELETE /auctions/1.json
   def destroy
     @auction.destroy
     respond_to do |format|
@@ -64,12 +53,10 @@ class AuctionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_auction
       @auction = Auction.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def auction_params
       params.require(:auction).permit(:title, :description, :end_date, :category)
     end

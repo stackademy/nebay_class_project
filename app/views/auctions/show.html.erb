@@ -20,5 +20,22 @@
   <%= @auction.user_id %>
 </p>
 
+<p>
+  <strong>Highest bid:</strong>
+  <% if @auction.bids.present? %>
+    <%= @auction.highest_bid.amount %>
+  <% else %>
+    no bids yet!
+  <% end %>
+</p>
+
+<p>
+  <%= @current_auction.title %>
+</p>
+
+<p>
+  <%= link_to 'Make a bid', new_bid_path(@auction) %>
+</p>
+
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
