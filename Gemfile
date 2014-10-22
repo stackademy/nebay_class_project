@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 
 gem 'wirble'
 gem 'awesome_print'
-
+gem 'bootstrap-sass'
 gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

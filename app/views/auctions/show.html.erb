@@ -16,8 +16,28 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @auction.user_id %>
+  <strong>Auction by:</strong>
+  <%= @auction.user.email %>
+</p>
+<p>
+	<strong>Current bid:</strong>
+    <% if @auction.bids.present? %>
+    	<div class="bid-highest">
+    		<%= @auction.highest_bid.amount %>
+    	</div>
+    <% else %>
+            no bids
+    <% end %>
+</p>
+<p>
+	<div class="row">
+		<div class="col-xs-2" >
+			<div class="form-group">
+				<input type="number" class="form-control bid-amount" placeholder="bid amount">
+			</div>
+		</div>
+		<button type="button" class="btn btn-primary bid-do">bid now!</button>
+	</div>
 </p>
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
