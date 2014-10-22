@@ -19,7 +19,7 @@
       <tr>
         <td><%= auction.title %></td>
         <td><%= auction.description %></td>
-        <td><%= auction.end_date %></td>
+        <td><%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</td>
         <td><%= auction.user.email %></td>
         <td><%= auction.category %></td>
         <td>
