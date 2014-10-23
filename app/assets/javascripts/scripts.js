@@ -1,7 +1,8 @@
 
 var main = function(){
 
-	$('.bid-do').click(function(){
+	$('.payform').submit(function(event){
+	// $('.bid-do').click(function(){
 console.log("running")
 		$('.form-group').removeClass("has-error")
 		if($('.bid-highest')[0]) {
@@ -14,6 +15,12 @@ console.log("running")
 			if(bid_amount <= bid_highest) {
 				$('.form-group').addClass("has-error")
 			
+				
+					event.preventDefault()
+					console.log('hallo')
+					return false;
+				// });
+
 				console.log("bid too low")
 			}
 		}
@@ -21,7 +28,7 @@ console.log("running")
 			console.log("no bids yet")
 		}
 	})
-
+	
 }
 
 $(document).ready(main)

@@ -29,25 +29,22 @@
             no bids
     <% end %>
 </p>
-<p>
-	<div class="row">
-		<div class="col-xs-2" >
-			<div class="form-group">
-				<input type="number" class="form-control bid-amount" placeholder="bid amount">
-			</div>
-		</div>
-		<button type="button" class="btn btn-primary bid-do">bid now!</button>
-	</div>
-</p>
+
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
 
 
 
-<%= form_for(Bid.new(auction: @auction)) do |f| %>
-    <%= f.number_field :amount %>
+<%= form_for(Bid.new(auction: @auction) ,  html: {class: "payform"} ) do |f| %>
+<div class="row">
+    <div class="col-xs-2" >
+      <div class="form-group">
+    <%= f.number_field :amount, class: "form-control bid-amount", placeholder: "bid amount" %>
     <%= f.hidden_field :auction_id %>
-    <%= f.submit %>
+    <%= f.submit "bid now!", class: "btn btn-primary bid-do" %>
+  </div>
+  </div>
+</div>
 <% end %>
 
