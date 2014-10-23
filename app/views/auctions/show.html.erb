@@ -22,29 +22,36 @@
 <p>
 	<strong>Current bid:</strong>
     <% if @auction.bids.present? %>
-    	<div class="bid-highest">
+    	<span class="bid-highest">
     		<%= @auction.highest_bid.amount %>
-    	</div>
+    	</span>
     <% else %>
             no bids
     <% end %>
 </p>
 
 
+
+<% if Time.now < @auction.end_date %>
+  <p>This auction expires <%= distance_of_time_in_words(@auction.end_date, Time.now) %> from now </p>
+  <p>
+  <%= form_for(Bid.new(auction: @auction) ,  html: {class: "payform"} ) do |f| %>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="form-group">
+          <%= f.number_field :amount, class: "form-control bid-amount", placeholder: "bid amount" %>
+          <%= f.hidden_field :auction_id %>
+          <%= f.submit "bid now!", class: "btn btn-primary bid-do" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </p>
+<% else %>
+  <h1>This auction has expired!</h1>
+  <h2>We will send you an email after lunch</h2>
+<% end %>
+
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
-
-
-
-<%= form_for(Bid.new(auction: @auction) ,  html: {class: "payform"} ) do |f| %>
-<div class="row">
-    <div class="col-xs-2" >
-      <div class="form-group">
-    <%= f.number_field :amount, class: "form-control bid-amount", placeholder: "bid amount" %>
-    <%= f.hidden_field :auction_id %>
-    <%= f.submit "bid now!", class: "btn btn-primary bid-do" %>
-  </div>
-  </div>
-</div>
-<% end %>
 

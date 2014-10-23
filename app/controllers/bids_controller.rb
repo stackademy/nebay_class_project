@@ -1,3 +1,4 @@
+
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
 
@@ -24,6 +25,15 @@ class BidsController < ApplicationController
   # POST /bids
   # POST /bids.json
   def create
+    current_auction = params[:bid][:auction_id]
+    @bids = Bid.where(auction_id: current_auction)
+    if @bids.present?
+      @secondbidder = @bids.order('amount DESC')[0]
+      @secondbid = @secondbidder.amount
+      mail = BidderMailer.new_bidder_alert(@secondbidder.user.email, "You Looooooooseee!")
+      mail.deliver
+    end
+
     @bid = Bid.new(bid_params)
     @bid.user = current_user
 
