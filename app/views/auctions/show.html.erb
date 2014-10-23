@@ -42,3 +42,12 @@
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
+
+
+
+<%= form_for(Bid.new(auction: @auction)) do |f| %>
+    <%= f.number_field :amount %>
+    <%= f.hidden_field :auction_id %>
+    <%= f.submit %>
+<% end %>
+

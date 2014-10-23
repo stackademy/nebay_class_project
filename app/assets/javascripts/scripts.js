@@ -1,8 +1,8 @@
-console.log("running")
 
 var main = function(){
 
 	$('.bid-do').click(function(){
+console.log("running")
 		$('.form-group').removeClass("has-error")
 		if($('.bid-highest')[0]) {
 			var bid_amount = $('.bid-amount')[0].value
