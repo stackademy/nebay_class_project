@@ -1,5 +1,7 @@
 class AuctionsController < ApplicationController
   before_action :set_auction, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
 
   # GET /auctions
   # GET /auctions.json
@@ -19,6 +21,7 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/1/edit
   def edit
+    
   end
 
   # POST /auctions
@@ -63,6 +66,8 @@ class AuctionsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_auction
@@ -73,4 +78,11 @@ class AuctionsController < ApplicationController
     def auction_params
       params.require(:auction).permit(:title, :description, :end_date, :category)
     end
+
+  def check_user
+    unless @auction.user == current_user
+      redirect_to auctions_path, notice: "You are not authorized to do this"  
+    end
+
+  end
 end
