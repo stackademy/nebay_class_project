@@ -1,0 +1,8 @@
+<div class="row">
+  <% @categories.each do |category| %>
+    <div class="col-md-4 frontpage_gallery">
+       <img src="<%= Auction.where(category: category).first.picture.thumb %>" />
+      <%= link_to category.capitalize, category_path(category) %>
+    </div>
+    <% end %>
+</div>

@@ -20,6 +20,11 @@
   <%= @auction.user.email %>
 </p>
 <p>
+  <strong>Auction by:</strong>
+  <img src="<%= @auction.picture %>"/>
+  
+</p>
+<p>
 	<strong>Current bid:</strong>
     <% if @auction.bids.present? %>
     	<span class="bid-highest">
