@@ -2,5 +2,48 @@
 
 
 .frontpage_gallery{
-  background: #EDEDED; 
+  background: #fff; 
+}
+
+
+.gallery_item{
+
+  max-width:100%;
+}
+
+
+.float{
+
+  float: left;
+  padding: 20px;
+}
+
+.article-image-frame {
+  position: relative;
+
+}
+
+.rollover {
+ top: 0;
+ padding: 5px 10px; 
+ color: white;
+ z-index:1.0;
+ position: absolute;
+ width: 100%;
+ background: rgba(0,0,0,0.8);
+  
+
+  
+
+
+}
+
+
+
+
+.imgborder {
+  display: block;
+  width: 100%;
+
+
 }

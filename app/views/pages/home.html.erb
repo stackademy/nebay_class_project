@@ -1,8 +1,17 @@
 <div class="row">
   <% @categories.each do |category| %>
-    <div class="col-md-4 frontpage_gallery">
-       <img src="<%= Auction.where(category: category).first.picture.thumb %>" />
-      <%= link_to category.capitalize, category_path(category) %>
+    
+    <div class="float">
+      <a href=" <%=category_path(category)%>">
+        <figure class="article-image-frame">
+          <img class="imgborder"  src="<%= Auction.where(category: category).last.picture.thumb %>" />
+                   
+          <figcaption class="rollover" >
+            <%= category.capitalize %>
+          </figcaption>
+        </figure>
+      </a>
     </div>
-    <% end %>
+    
+  <% end %>
 </div>
