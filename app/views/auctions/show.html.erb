@@ -53,8 +53,15 @@
   <% end %>
   </p>
 <% else %>
-  <h1>This auction has expired!</h1>
-  <h2>We will send you an email after lunch</h2>
+  <% if @auction.bids.present? %>
+    <% if @auction.highest_bid.user == current_user %>
+      <h1>Congratulations, you have won the auction!</h1>
+    <% else %>
+      <h1>This auction has expired!</h1>
+    <% end %>
+  <% else %>
+      <h1>This auction has expired without any bids!</h1>
+    <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
