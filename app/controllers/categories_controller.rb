@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   
-
+  # makes us find the categories
   def index
     @categories = Auction.uniq.pluck(:category)
   end
