@@ -12,16 +12,13 @@
 }
 
 
-.float{
-
-  float: left;
-  padding: 20px;
-}
-
 .article-image-frame {
   position: relative;
 
 }
+
+
+
 
 .rollover {
  top: 0;
@@ -31,15 +28,13 @@
  position: absolute;
  width: 100%;
  background: rgba(0,0,0,0.8);
-  
-
-  
-
-
 }
 
 
-
+.category-item{
+height: 270px;
+overflow: hidden;	
+}
 
 .imgborder {
   display: block;

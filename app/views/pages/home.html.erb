@@ -1,7 +1,7 @@
 <div class="row">
   <% @categories.each do |category| %>
     
-    <div class="float">
+    <div class="col-md-4 category-item">
       <a href=" <%=category_path(category)%>">
         <figure class="article-image-frame">
           <img class="imgborder"  src="<%= Auction.where(category: category).last.picture.thumb %>" />
