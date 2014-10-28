@@ -7,7 +7,9 @@ class Auction < ActiveRecord::Base
     self.bids.order(amount: :desc).first
   end
 
+ 
 
+ 	
 
 
 

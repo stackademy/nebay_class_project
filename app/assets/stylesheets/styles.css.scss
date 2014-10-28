@@ -1,6 +1,9 @@
 @import "bootstrap";
+@import  "colors";
+body{
+background:$my_white;
 
-
+}
 .frontpage_gallery{
   background: #fff; 
 }
@@ -13,12 +16,9 @@
 
 
 .article-image-frame {
-  position: relative;
-
+position: relative;
+height: 270px
 }
-
-
-
 
 .rollover {
  top: 0;
@@ -32,8 +32,35 @@
 
 
 .category-item{
-height: 270px;
-overflow: hidden;	
+	height: 270px;
+	overflow: hidden;
+	a {
+		.next-auction-to-end {
+			// display: none;
+			transition:height 0.1s;
+			webkit-transition:height 0.1s ;
+			height: 0px;
+			
+
+			}	
+		}
+	a:hover {
+		.next-auction-to-end {
+			display: block;
+			height: 240px;
+			}		
+		}
+
+	.next-auction-to-end {
+		background: rgba(43, 43, 43, .9);
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		color:#fff;
+		}
+
+	
+	
 }
 
 .imgborder {

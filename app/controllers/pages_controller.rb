@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   
   def home
-    @categories = Auction.uniq.pluck(:category)
+    @categories = Category.all
   end
 
   def about
@@ -9,4 +9,6 @@ class PagesController < ApplicationController
 
   def imprint
   end
+
+  
 end

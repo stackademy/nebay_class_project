@@ -4,4 +4,9 @@ module AuctionsHelper
     auction.bids.order(amount: :desc).first
   end
 
+  def auctions_for_category(category)
+  	Auction.where(category: category)
+  	
+  end
+
 end
