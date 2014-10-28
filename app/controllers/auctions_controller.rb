@@ -20,6 +20,12 @@ class AuctionsController < ApplicationController
     @auction = Auction.new
   end
 
+  def my_auctions
+    @auctions = Auction.where(user:current_user)
+    render :index
+  end
+
+
   # GET /auctions/1/edit
   def edit
     
