@@ -20,7 +20,7 @@ def create
     :description => 'Rails Stripe customer',
     :currency    => 'eur'
   )
-render text: "Paid #{@amount} euros for #{@auction.title}"
+
 rescue Stripe::CardError => e
   flash[:error] = e.message
   redirect_to charges_path

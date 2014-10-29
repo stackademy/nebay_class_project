@@ -4,5 +4,3 @@ Rails.configuration.stripe = {
 }
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
-# raise ENV['PUBLISHABLE_KEY'].inspect
-# raise Rails.configuration.stripe[:secret_key].inspect
