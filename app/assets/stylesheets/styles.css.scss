@@ -5,15 +5,49 @@ a:hover{
 @import "bootstrap";
 @import  "colors";
 body{
-	background:$my_white;
+	background:rgba(255,245,186,0.3);
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+}
+
+.navbar-default{
+	
+	border: 5px solid black;
+	background-color: black;
+	color: white;
+} 
+
+
+
+.navbar-default .navbar-brand {
+	color: white;
+	font-size: 50px;
 
 }
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: white;
+	background-color: black;
+
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+	color: $my_yellow;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+
+}
+
+
+
 .frontpage_gallery{
 	background: #fff; 
 }
 
 .form-control {
-	max-width: 20%;
+	width: auto;
 
 }
 
