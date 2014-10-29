@@ -26,6 +26,7 @@ body{
 }
 
 .rollover {
+	font-family: 'Montserrat', sans-serif;
 	font-size: 30px;			
 	top: 0;
 	padding: 5px 10px; 
@@ -42,6 +43,7 @@ body{
 	a {
 		.next-auction-to-end {
 			// display: none;
+			font-family: 'Montserrat', sans-serif;
 			transition:height 1s;
 			webkit-transition:height 1s;
 			height: 0px;
@@ -51,6 +53,7 @@ body{
 	}
 	a:hover {
 		.next-auction-to-end {
+			font-family: 'Montserrat', sans-serif;
 			display: block;
 			height: 100px;
 			padding: 10px 15px 20px 15px;
@@ -60,6 +63,7 @@ body{
 	}
 
 	.next-auction-to-end {
+		font-family: 'Montserrat', sans-serif;
 		background: rgba(43, 43, 43, .9);
 		position: absolute;
 		bottom: 0;
