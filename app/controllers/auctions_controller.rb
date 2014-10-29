@@ -6,7 +6,8 @@ class AuctionsController < ApplicationController
   # GET /auctions
   # GET /auctions.json
   def index
-    @auctions = Auction.all
+    sort_order= params[:order]
+    @auctions = Auction.order(sort_order)
   end
 
   # GET /auctions/1

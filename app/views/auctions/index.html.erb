@@ -1,58 +1,39 @@
 
 
 <h1>Listing auctions</h1>
+<%= render 'dropdown' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>      
-      <th>Description</th>
-      <th>End date</th>
-      <th>User</th>
-      <th>Category</th>
-      <th>High bid</th>
-      <th>High bidder</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @auctions.each do |auction| %>
-      <tr>
-        <td><%= auction.title %></td>
-        <td> <img src=" <%= auction.picture.thumb %> "> </td>
-        <td><%= auction.description %></td>
-        <td><%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</td>
-        <td><%= auction.user.email %></td>
-        <td><%= auction.category %></td>
-        <td>
-          <% if auction.bids.present? %>
-            <%= auction.highest_bid.amount %>
-          <% else %>
-            no bids
-          <% end %>
-        </td>
-
-        <td>
-          <% if auction.bids.present? %>
-            <%= auction.highest_bid.user.email %>
-          <% else %>
-            no bids!
-          <% end %>
-        </td>
-
-
-
-        <td><%= link_to 'Show', auction %></td>
-        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
-        <td><%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="row">
+        <div class="col-md-8">
+          <h2><%= auction.title %></h2> 
+          <a href=" <%= auction_path(auction) %>  ">
+            <img src=" <%= auction.picture.thumb %> "> <br>
+          </a>
+          <%= auction.description %>
+        </div>
+            <div class="col-md-4">
+              <h4>Auction ends <%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</h4>
+              <h4>Category: <%= auction.category %></h4>
+              
+              <% if auction.bids.present? %>
+                <%= auction.highest_bid.amount %>
+              <% else %>
+                no bids
+              <% end %>
+        
+              <% if auction.bids.present? %>
+                <%= auction.highest_bid.user.email %>
+              <% else %>
+                no bids!
+              <% end %>
+            
+                         
+            </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+
 
 <%= link_to 'New Auction', new_auction_path %>
 

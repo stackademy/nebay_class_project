@@ -9,8 +9,10 @@ class CategoriesController < ApplicationController
   def show
     @category = params[:id]
     # find(params[:id])
+    sort_order= params[:order]
+    
 
-    @auctions = Auction.where(category: @category)
+    @auctions = Auction.where(category: @category).order(sort_order)
     render 'auctions/index'
   end
 
