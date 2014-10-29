@@ -1,11 +1,11 @@
 @import "bootstrap";
 @import  "colors";
 body{
-background:$my_white;
+	background:$my_white;
 
 }
 .frontpage_gallery{
-  background: #fff; 
+	background: #fff; 
 }
 
 .form-control {
@@ -15,24 +15,24 @@ background:$my_white;
 
 .gallery_item{
 
-  max-width:100%;
+	max-width:100%;
 }
 
 
 .article-image-frame {
-position: relative;
-height: 270px;
-margin-top: 10px;
+	position: relative;
+	height: 270px;
+	margin-top: 10px;
 }
 
 .rollover {
- top: 0;
- padding: 5px 10px; 
- color: white;
- z-index:1.0;
- position: absolute;
- width: 100%;
- background: rgba(0,0,0,0.8);
+	font-size: 30px;			
+	top: 0;
+	padding: 5px 10px; 
+	color: white;
+	position: absolute;
+	width: 100%;
+	background: rgba(0,0,0,0.8);
 }
 
 
@@ -42,19 +42,22 @@ margin-top: 10px;
 	a {
 		.next-auction-to-end {
 			// display: none;
-			transition:height 0.1s;
-			webkit-transition:height 0.1s ;
+			transition:height 1s;
+			webkit-transition:height 1s;
 			height: 0px;
-			
+			color: rgba(43, 43, 43, .9);
 
-			}	
-		}
+		}	
+	}
 	a:hover {
 		.next-auction-to-end {
 			display: block;
-			height: 240px;
-			}		
-		}
+			height: 100px;
+			padding: 10px 15px 20px 15px;
+			font-size: 25px;
+			color: $my_yellow;
+		}		
+	}
 
 	.next-auction-to-end {
 		background: rgba(43, 43, 43, .9);
@@ -62,15 +65,15 @@ margin-top: 10px;
 		bottom: 0;
 		width: 100%;
 		color:#fff;
-		}
+	}
 
 	
 	
 }
 
 .imgborder {
-  display: block;
-  width: 100%;
+	display: block;
+	width: 100%;
 
 
 }

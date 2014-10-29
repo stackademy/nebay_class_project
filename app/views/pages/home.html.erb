@@ -11,7 +11,8 @@
           </figcaption>
           <div class="next-auction-to-end">
             <!-- category.next_auction_to_end.short_description -->
-            <%= distance_of_time_in_words(auctions_for_category(category).last.end_date, Time.now) %>
+            The next auction ends in<br> 
+            <%=distance_of_time_in_words(auctions_for_category(category).last.end_date, Time.now)%>
           </div>
         </figure>
       </a>
