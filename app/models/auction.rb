@@ -8,8 +8,8 @@ class Auction < ActiveRecord::Base
 	 end
 
 
-	def finished?
-		 Time.now < @auction.end_date 
+	def active?
+		 Time.now < end_date 
 	end
 
 end

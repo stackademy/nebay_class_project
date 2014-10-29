@@ -38,7 +38,7 @@
 
 
 
-<% if @auction.finished? %>
+<% if @auction.active? %>
   <p>This auction expires <%= distance_of_time_in_words(@auction.end_date, Time.now) %> from now </p>
   <p>
   <%= form_for(Bid.new(auction: @auction) ,  html: {class: "payform"} ) do |f| %>
