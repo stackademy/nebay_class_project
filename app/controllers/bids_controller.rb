@@ -30,7 +30,7 @@ class BidsController < ApplicationController
     if @bids.present?
       @secondbidder = @bids.order('amount DESC')[0]
       @secondbid = @secondbidder.amount
-      mail = BidderMailer.new_bidder_alert(@secondbidder.user.email, "You Looooooooseee!")
+      mail = BidderMailer.new_bidder_alert(@secondbidder.user.email, "You are not the highest bidder anymore!")
       mail.deliver
     end
 
