@@ -7,7 +7,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :bids
-  resources :charges
+  resources :charges do
+    collection do
+      post :send_emails
+    end 
+
+  end
+
   resources :auctions do
     collection do
       get :my_auctions
