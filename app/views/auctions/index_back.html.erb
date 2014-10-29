@@ -25,16 +25,15 @@
   
 </p>
 <p>
-  <strong>Current bid:</strong>
+	<strong>Current bid:</strong>
     <% if @auction.bids.present? %>
-      <span class="bid-highest">
-        <%= @auction.highest_bid.amount %>
-      </span>
+    	<span class="bid-highest">
+    		<%= @auction.highest_bid.amount %>
+    	</span>
     <% else %>
             no bids
     <% end %>
 </p>
-
 
 
 
