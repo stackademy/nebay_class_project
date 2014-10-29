@@ -1,80 +1,59 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @auction.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @auction.description %>
-</p>
+<h1>Listing auctions</h1>
+<%= render 'dropdown' %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Image</th>      
+      <th>Description</th>
+      <th>End date</th>
+      <th>User</th>
+      <th>Category</th>
+      <th>High bid</th>
+      <th>High bidder</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>End date:</strong>
-  <%= @auction.end_date %>
-</p>
-
-<p>
-  <strong>Auction by:</strong>
-  <%= @auction.user.email %>
-</p>
-<p>
-  <strong>Auction by:</strong>
-  <img src="<%= @auction.picture %>"/>
-  
-</p>
-<p>
-	<strong>Current bid:</strong>
-    <% if @auction.bids.present? %>
-    	<span class="bid-highest">
-    		<%= @auction.highest_bid.amount %>
-    	</span>
-    <% else %>
+  <tbody>
+    <% @auctions.each do |auction| %>
+      <tr>
+        <td><%= auction.title %></td>
+        <td> <img src=" <%= auction.picture.thumb %> "> </td>
+        <td><%= auction.description %></td>
+        <td><%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</td>
+        <td><%= auction.user.email %></td>
+        <td><%= auction.category %></td>
+        <td>
+          <% if auction.bids.present? %>
+            <%= auction.highest_bid.amount %>
+          <% else %>
             no bids
+          <% end %>
+        </td>
+
+        <td>
+          <% if auction.bids.present? %>
+            <%= auction.highest_bid.user.email %>
+          <% else %>
+            no bids!
+          <% end %>
+        </td>
+
+
+
+        <td><%= link_to 'Show', auction %></td>
+        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
+        <td><%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
-</p>
+  </tbody>
+</table>
 
-
-
-
-<% if @auction.active? %>
-  <p>This auction expires <%= distance_of_time_in_words(@auction.end_date, Time.now) %> from now </p>
-  <p>
-  <%= form_for(Bid.new(auction: @auction) ,  html: {class: "payform"} ) do |f| %>
-    <div class="row">
-      <div class="col-xs-2">
-        <div class="form-group">
-          <%= f.number_field :amount, class: "form-control bid-amount", placeholder: "bid amount" %>
-          <%= f.hidden_field :auction_id %>
-          <%= f.submit "bid now!", class: "btn btn-primary bid-do" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  </p>
-<% else %>
-  <% if @auction.bids.present? %>
-    <% if @auction.highest_bid.user == current_user %>
-      <h1>Congratulations, you have won the auction!</h1>
-        <%= form_tag charges_path do %>
-        <input type="hidden" name="auction_id" value="<%= @auction.id %>" />
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-email="<%= current_user.email %>"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= @auction.highest_bid.amount_in_cents %>"></script>        
-<% end %>
-
-
-    <% else %>
-      <h1>This auction has expired!</h1>
-    <% end %>
-  <% else %>
-      <h1>This auction has expired without any bids!</h1>
-    <% end %>
-<% end %>
 <br>
-<%= link_to 'Edit', edit_auction_path(@auction) %> |
-<%= link_to 'Back', auctions_path %>
+
+<%= link_to 'New Auction', new_auction_path %>
+
 
