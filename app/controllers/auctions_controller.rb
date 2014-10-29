@@ -35,6 +35,7 @@ class AuctionsController < ApplicationController
   # POST /auctions
   # POST /auctions.json
   def create
+    raise auction_params.inspect
     @auction = Auction.new(auction_params)
     @auction.user = current_user
 
