@@ -32,9 +32,5 @@ console.log("running")
 }
 
 
-  $('.selectpicker').selectpicker({
-      style: 'btn-info',
-      size: 4
-  });
 
 $(document).ready(main)

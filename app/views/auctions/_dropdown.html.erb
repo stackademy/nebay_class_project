@@ -1,0 +1,11 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    Choose Sorting Order
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">  
+  <li role="presentation"><a role="menuitem" tabindex="-1" href=" <%= auctions_path(order: 'created_at')  %>"> Oldest </a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href=" <%= auctions_path(order: 'end_date')  %> "> Ending Soon </a></li>
+
+  </ul>
+</div>
