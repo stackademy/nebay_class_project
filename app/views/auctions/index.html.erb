@@ -4,28 +4,31 @@
 <%= render 'dropdown' %>
 
     <% @auctions.each do |auction| %>
+      <h2><%= auction.title %></h2> 
+
       <div class="row">
-        <div class="col-md-8">
-          <h2><%= auction.title %></h2> 
+        <div class="col-xs-12 col-sm-6 col-lg-8 ">
           <a href=" <%= auction_path(auction) %>  ">
-            <img src=" <%= auction.picture.thumb %> "> <br>
+            <img class="gallery_item" src=" <%= auction.picture.thumb %> "> <br>
           </a>
           <%= auction.description %>
         </div>
-            <div class="col-md-4">
-              <h4>Auction ends <%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</h4>
+            <div class="col-xs-6 col-lg-4 auction_listing_info">
+              <h4 class="nebay_alert">Auction ends <%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</h4>
               <h4>Category: <%= auction.category %></h4>
               
+              <h4>Highest bid:
               <% if auction.bids.present? %>
                 <%= auction.highest_bid.amount %>
               <% else %>
-                no bids
+                Thre are no bids yet
               <% end %>
-        
+              </h4>
+              <h4>Highest bidder:
               <% if auction.bids.present? %>
                 <%= auction.highest_bid.user.email %>
               <% else %>
-                no bids!
+                No highest bidder yet
               <% end %>
             
                          

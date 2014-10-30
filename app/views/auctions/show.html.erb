@@ -1,46 +1,45 @@
 <p id="notice"><%= notice %></p>
+ <h2><%= @auction.title %></h2> 
 
-<p>
-  <strong>Title:</strong>
-  <%= @auction.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @auction.description %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @auction.end_date %>
-</p>
-
-<p>
-  <strong>Auction by:</strong>
-  <%= @auction.user.email %>
-</p>
-<p>
-  <strong>Auction by:</strong>
-  <img src="<%= @auction.picture %>"/>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-8 ">
+          <a href=" <%= auction_path(@auction) %>  ">
+            <img class="gallery_item" src=" <%= @auction.picture.thumb %> "> <br>
+          </a>
+          <%= @auction.description.capitalize %>
+        </div>
+            <div class="col-xs-6 col-lg-4 auction_listing_info">
+              <p class="auction_listing_info"><strong>Category:</strong> <%= @auction.category %></p>
+              
+              <p class="auction_listing_info"><strong>Current bid:</strong>
+              <% if @auction.bids.present? %>
+                <%= @auction.highest_bid.amount %>
+              <% else %>
+                Thre are no bids yet
+              <% end %>
+              </p>
+              <p class="auction_listing_info"><strong>Highest bidder:</strong>
+              <% if @auction.bids.present? %>
+                <%= @auction.highest_bid.user.email %>
+              <% else %>
+                No highest bidder yet
+              <% end %>
+              <p class="auction_listing_info"><strong>Auction by:</strong> <%= @auction.user.email %></p>            
+              <p class="auction_listing_info"><strong>End date:</strong> <%= @auction.end_date %></p>
   
-</p>
-<p>
-  <strong>Current bid:</strong>
-    <% if @auction.bids.present? %>
-      <span class="bid-highest">
-        <%= @auction.highest_bid.amount %>
-      </span>
-    <% else %>
-            no bids
-    <% end %>
-</p>
+            
+                         
+            </div>
+      </div>
+
+
 
 
 
 
 
 <% if @auction.active? %>
-  <p>This auction expires <%= distance_of_time_in_words(@auction.end_date, Time.now) %> from now </p>
+  <h4 class="nebay_alert">This auction expires <%= distance_of_time_in_words(@auction.end_date, Time.now) %> from now </h4>
   <p>
   <%= form_for(Bid.new(auction: @auction) ,  html: {class: "payform"} ) do |f| %>
     <div class="row">
@@ -48,6 +47,7 @@
         <div class="form-group">
           <%= f.number_field :amount, class: "form-control bid-amount", placeholder: "bid amount" %>
           <%= f.hidden_field :auction_id %>
+          <br>
           <%= f.submit "bid now!", class: "btn btn-primary bid-do" %>
         </div>
       </div>

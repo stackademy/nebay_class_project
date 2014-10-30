@@ -25,12 +25,13 @@
   </div>
   
 <div class="field">
-  
-  <select class="form-control">
-    <% @categories.each do |category| %>
-    <option><%= category %></option>
-    <% end %>    
-  </select>
+
+
+
+
+<%= options_from_collection_for_select(Category.all, :id, :name) %>
+
+
 
 </div>
 
