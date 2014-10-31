@@ -5,7 +5,7 @@ a:hover{
 @import "bootstrap";
 @import  "colors";
 body{
-	background:rgba(255,245,186,0.3);
+	background:$my_white;
 	font-family: 'Montserrat', sans-serif;
 	
 }
@@ -53,6 +53,10 @@ body{
 }
 
 
+.notice_bg_color{
+	background-color:$my_yellow;
+}
+
 .frontpage_gallery{
 	background: #fff; 
 }
@@ -65,6 +69,7 @@ body{
 .gallery_item{
 
 	max-width:100%;
+	margin-bottom: 10px;
 }
 
 
