@@ -23,8 +23,9 @@ class AuctionsController < ApplicationController
   end
 
   def my_auctions
-    @bids = Bid.where(user:current_user)
+    @bids= Bid.where(user:current_user)     
     @auctions = Auction.where(user:current_user)
+    
     render :index
   end
 

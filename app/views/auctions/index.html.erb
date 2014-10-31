@@ -38,6 +38,22 @@
 
 
 
+<h3> <span class="label label-default notice_bg_color">My Bids</span></h3>
+
+
+<% @bids.each do |bid| %>
+<h2 class="page-header"><%= bid.auction.title %></h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-8 ">
+      <a href=" <%= auction_path(bid) %> ">
+        <img class="gallery_item" src=" <%= bid.auction.picture.thumb %>"> 
+
+    </div>
+  
+  </div>
+<% end %>
+      
 <%= link_to 'New Auction', new_auction_path %>
+
 
 

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'pages/imprint'
 
   devise_for :users
+  
+ 
   resources :bids
+  
   resources :charges do
     collection do
       post :send_emails
