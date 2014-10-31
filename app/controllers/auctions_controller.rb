@@ -28,6 +28,16 @@ class AuctionsController < ApplicationController
     render :index
   end
 
+  def search
+    search_term = params[:search_term]
+    @auctions = Auction.search(search_term)
+    if @auctions == []
+      flash[:notice] = "There are no corresponding results"
+      render :index
+    else
+      render :index
+    end
+  end
 
   # GET /auctions/1/edit
   def edit
@@ -43,7 +53,7 @@ class AuctionsController < ApplicationController
 
     respond_to do |format|
       if @auction.save
-        format.html { redirect_to @auction, notice: 'Auction was successfully created.' }
+        format.html { redirect_to @auction }
         format.json { render :show, status: :created, location: @auction }
       else
         format.html { render :new }
@@ -94,5 +104,8 @@ class AuctionsController < ApplicationController
       redirect_to auctions_path, notice: "You are not authorized to do this"  
     end
 
+  def search_term
+    params.require(:search_term)
   end
+end
 end

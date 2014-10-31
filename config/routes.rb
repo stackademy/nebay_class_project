@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :auctions do
     collection do
       get :my_auctions
+      get :search
     end 
 
   end
