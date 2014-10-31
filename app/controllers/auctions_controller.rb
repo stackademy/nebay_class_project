@@ -14,6 +14,7 @@ class AuctionsController < ApplicationController
   
   # GET /auctions/1.json
   def show
+
   end
 
   # GET /auctions/new
@@ -22,6 +23,7 @@ class AuctionsController < ApplicationController
   end
 
   def my_auctions
+    @bids = Bid.where(user:current_user)
     @auctions = Auction.where(user:current_user)
     render :index
   end
