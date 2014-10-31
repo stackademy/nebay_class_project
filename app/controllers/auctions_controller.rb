@@ -7,7 +7,11 @@ class AuctionsController < ApplicationController
   # GET /auctions.json
   def index
     sort_order= params[:order]
+    # if sort_order = "end_date"
+    #   @auctions = Auction.active?
+    # else
     @auctions = Auction.order(sort_order)
+  # end
   end
 
   # GET /auctions/1
@@ -30,7 +34,7 @@ class AuctionsController < ApplicationController
     search_term = params[:search_term]
     @auctions = Auction.search(search_term)
     if @auctions == []
-      flash[:notice] = "There are no corresponding results"
+      flash.now[:notice] = "There are no corresponding results"
       render :index
     else
       render :index
@@ -51,7 +55,7 @@ class AuctionsController < ApplicationController
 
     respond_to do |format|
       if @auction.save
-        format.html { redirect_to @auction }
+        format.html { redirect_to @auction, notice: 'Auction was successfully created.' }
         format.json { render :show, status: :created, location: @auction }
       else
         format.html { render :new }
