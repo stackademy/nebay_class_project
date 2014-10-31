@@ -15,7 +15,13 @@
           <%= auction.description %>
         </div>
             <div class="col-xs-6 col-lg-4 auction_listing_info">
-              <h4 class="nebay_alert">Auction ends <%= distance_of_time_in_words(auction.end_date, Time.now) %> from now</h4>
+              <h4 class="nebay_alert">
+                <% unless auction.active? %>
+                  Auction has expired
+                <% else %>
+                 Auction ends <%= distance_of_time_in_words(auction.end_date, Time.now) %> from now
+                <% end %>
+              </h4>
               <h4>Category: <%= auction.category %></h4>
               
               <h4>Highest bid:
