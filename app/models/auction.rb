@@ -19,4 +19,8 @@ class Auction < ActiveRecord::Base
 		 Time.now < end_date 
 	end
 
+  def self.search(query)
+    where("title like ?", "%#{query}%")
+  end
+
 end
