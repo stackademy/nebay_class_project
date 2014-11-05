@@ -15,6 +15,7 @@ class Auction < ActiveRecord::Base
 	 end
 
 
+
 	def active?
 		 Time.now < end_date 
 	end
