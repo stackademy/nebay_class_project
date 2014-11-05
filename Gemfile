@@ -57,4 +57,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 
 
-
+group :test do
+gem 'rspec-rails'
+gem 'syntax'
+gem 'factory_girl_rails'
+gem 'email_spec', require: false
+gem "webrat"
+end
