@@ -5,7 +5,7 @@ class Auction < ActiveRecord::Base
   validates_presence_of :title, :message => "can't be empty"
   validates_presence_of :description, :message => "can't be empty"
   validates_presence_of :category, :message => "can't be empty"
-  validates_presence_of :picture, :message => "can't be empty"
+  #validates_presence_of :picture, :message => "can't be empty"
 
 
 
@@ -13,6 +13,7 @@ class Auction < ActiveRecord::Base
 	 def highest_bid
 	    self.bids.order(amount: :desc).first
 	 end
+
 
 
 	def active?
